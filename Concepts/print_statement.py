@@ -1,0 +1,1 @@
+print('String Manipulation Exercise \nString cancatination can be done using "+" sign \nNew lines can be printed using backslach and n')
