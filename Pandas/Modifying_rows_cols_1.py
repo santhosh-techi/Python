@@ -7,7 +7,7 @@ people={
 df=pd.DataFrame(people)
 #print(df.columns)
 
-#we can also rename all the fields using string functions, below are the examples
+#we can also rename all the fields/columns using string functions, below are the examples
 df.columns=[x.upper() for x in df.columns]
 df.columns=[x.lower() for x in df.columns]
 df.columns=[x.capitalize() for x in df.columns]
@@ -25,7 +25,7 @@ df.loc[1]=('abc','abc','123') # no of columns need to be match, else it will rai
 
 #changing particular row value, chanfing the email address of sunny
 df.loc[1,'LastName']='abc'  # we can modify the respective filed values using df.at function
-df.at[1,'LastName']='abc' 
+df.at[1,'LastName']='abc'  #used for accessing the single row with efficient compared to loc,
 
 #we can also mofified list of columns
 df.loc[1,['FirstName','Email']]=('ABCD',1234)
@@ -39,4 +39,17 @@ df.loc[filt,'FirstName']='abcd@gmail.com'
 """Updating the Multiple Rows"""
 df['Email']=df['Email'].str.upper() #need to assign the filed to the respective field
 print(df)
+##############################################################################################
+dataset={
+    'First_Name': ['Corey','Jane','John'],
+    'Last_Name':['Schafer','Doe','Smith'],
+    'Email' :['CoreySchafer@gmail.com','JaneDoe@gmail.com','JohnSmith@gmail.com']
+}
+df=pd.DataFrame(dataset)
+filt=df['Last_Name']=='Schafer'
+df.loc[filt,'First_Name']='Santhosh' #updating the value
+print(df)
 
+#if want to update the  multiple values in a single shorr the
+df['Email']=''
+print(df)
