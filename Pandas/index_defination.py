@@ -1,4 +1,3 @@
-# list of strings
 lst = ['Geeks', 'For', 'Geeks', 'is', 'portal', 'for', 'Geeks']
 
 import pandas as pd
