@@ -6,7 +6,6 @@ Employee_df.columns = Employee_df.columns.str.strip()
 Employee_df['hire_date']=pd.to_datetime(Employee_df['hire_date'])
 Department_df.columns = Department_df.columns.str.strip()
 emp_dept_df=pd.merge(Employee_df,Department_df,how='outer',on='Dept_No')
-
 #count of employees
 print(Employee_df.__len__()) # len(Employee_df)
 #sorting   the dataframe based on the salary descending
@@ -59,6 +58,21 @@ filter_df=((Employee_df['emp_name'].str.lower().str.endswith('h')) & (Employee_d
 print(Employee_df[filter_df])
 #print details of the emps who have joined in Feb’2014.
 print(Employee_df[((Employee_df['hire_date'].dt.year==1981) & (Employee_df['hire_date'].dt.month==2) )])
+#get the job wise count of members with more than 3
+#job_wise_grp=Employee_df.groupby('job_name').size()  #size or apply(len) is used to get the count of batch 
+job_wise_grp=Employee_df.groupby('job_name').apply(len) 
+print(job_wise_grp[job_wise_grp>=3])
+#dept wise count
+dept_grp=emp_dept_df.groupby('Dept_Name').apply(len)
+print(dept_grp[dept_grp>=3])
+#to get full details
+group_sizes = emp_dept_df.groupby('Dept_Name').size()
+filtered_depts = group_sizes[group_sizes > 5].index
+print(emp_dept_df[emp_dept_df['Dept_Name'].isin(filtered_depts)])
+
+
+
+
 
 
 
