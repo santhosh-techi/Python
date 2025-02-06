@@ -67,7 +67,7 @@ dept_grp=emp_dept_df.groupby('Dept_Name').apply(len)
 print(dept_grp[dept_grp>=3])
 #to get full details
 group_sizes = emp_dept_df.groupby('Dept_Name').size()
-filtered_depts = group_sizes[group_sizes > 5].index
+filtered_depts = group_sizes[group_sizes > 5].index # it captures the index value 
 print(emp_dept_df[emp_dept_df['Dept_Name'].isin(filtered_depts)])
 
 
