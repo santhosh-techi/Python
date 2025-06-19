@@ -10,3 +10,4 @@ df['rank']=df.groupby('Name')['Score'].rank(method='first')
 print(df.sort_values(by='Score',ascending=True))
 
 
+
